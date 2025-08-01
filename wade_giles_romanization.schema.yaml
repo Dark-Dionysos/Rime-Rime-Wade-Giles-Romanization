@@ -6,6 +6,7 @@ schema:
   name: Wade-Giles Romanization 
   version: '1.0'
   author:
+    - 佛振 <chen.sst@gmail.com> # The schema's dict is modied from luna pinyin.
     - A. Z. Wong <angus_wong_philosophy@outlook.com>
   description: |
     Wade-Giles Romanization (威妥瑪拼音輸入法）. Type the `v` key for `ü`. And type semicolon for seperating phonation.
