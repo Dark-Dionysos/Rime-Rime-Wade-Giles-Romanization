@@ -5,7 +5,7 @@ For Windows 11 user:
 1. Download and install the [Weasel](https://rime.im/download/)
 1. Download the schema files, you can download directly on the website or use `git clone` command.
 1. Copy the yaml files to your user directory. The default user directory path is `C:\Users\<your user name>\AppData\Roaming\Rime`.
-1. From `Starting Menu`, click `All > 小狼毫輸入法 > 【小狼毫】輸入法設定`.
+1. From `Starting Menu`, click `All > Weasel > Weasel Setting`.
 1. In the prompted windows tick the Wide-Giles Romanization and detick all others, then press enter key twice.
 For Mac and Linux user, please refer the tutorial on how to install new input schema at [rime](https://rime.im/) official website.
 ## Usage
