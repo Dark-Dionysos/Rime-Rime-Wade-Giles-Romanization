@@ -1,7 +1,7 @@
 # Wade-Giles Romanization Input Schema for Rime
 This is an input schema for [Rime](https://rime.im/), with which you can input Chinese character through Wade-Giles Romanization.
 
-This schema is standalone version, and is independent of any other schemas, which is suitable for those who don't want to have other schemas on their disk. Further, the schema provides the reverse lookup function, and this function depend on the existence of luna_pinyin, stroke and jyut6ping3 schema.
+This schema is a standalone version (independent of any other schemas) which is suitable for those who don't want to have other schemas on their disk. Further, the schema provides the reverse lookup function, and this function depends on the existence of luna_pinyin, stroke and jyut6ping3 schema.
 ## Installation
 For Windows 11 user:
 1. Download and install the [Weasel](https://rime.im/download/)
