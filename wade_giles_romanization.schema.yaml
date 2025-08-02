@@ -6,12 +6,14 @@ schema:
   name: Wade-Giles Romanization 
   version: '1.0'
   author:
-    - 佛振 <chen.sst@gmail.com> # The schema's dict is modied from luna pinyin.
     - A. Z. Wong <angus_wong_philosophy@outlook.com>
   description: |
     Wade-Giles Romanization (威妥瑪拼音輸入法）. Type the `v` key for `ü`. And type semicolon for seperating phonation.
   dependencies:
     - stroke
+    - luna_pinyin
+    - jyut6ping3
+    - bopomofo
 
 switches:
   - name: ascii_mode
@@ -37,17 +39,24 @@ engine:
   segmentors:
     - ascii_segmentor
     - matcher
+    - affix_segmentor@luna_pinyin
+    - affix_segmentor@stroke
+    - affix_segmentor@jyut6ping3
+#    - affix_segmentor@chuyin
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
   translators:
     - punct_translator
-    - table_translator@custom_phrase
-    - reverse_lookup_translator
     - script_translator
+    - script_translator@luna_pinyin
+    - script_translator@stroke
+    - script_translator@jyut6ping3
+#    - script_translator@chuyin
   filters:
     - simplifier
     - uniquifier
+    -  reverse_lookup_filter@wade_giles_romanization_reverse_lookup
 
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcb'a
@@ -69,16 +78,44 @@ custom_phrase:
   enable_sentence: false
   initial_quality: 1
 
-reverse_lookup:
-  dictionary: stroke
-  enable_completion: true
+luna_pinyin:
+  tag: luna_pinyin
+  dictionary: luna_pinyin
   prefix: "`"
-  suffix: "'"
-  tips: 〔筆畫〕
+  suffix: ";"
+  tips: 〔Pinyin〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+stroke:
+  tag: stroke
+  dictionary: stroke
+  prefix: "x"
+  suffix: ";"
+  tips: 〔Stroke〕
   preedit_format:
     - xlit/hspnz/一丨丿丶乙/
-  comment_format:
-    - xform/([nl])v/$1ü/
+
+jyut6ping3:
+  tag: jyut6ping3
+  dictionary: jyut6ping3
+  prefix: "u"
+  suffix: ";"
+  tips: 〔Cantonese〕
+
+#chuyin:
+#  tag: chuyin
+#  dictionary: 
+#  prefix: "v"
+#  suffix: ";"
+#  tips: 〔chuyin〕
+
+wade_giles_romanization_reverse_lookup:
+  tags: [ luna_pinyin, stroke, jyut6ping3, ]
+  overwrite_comment: false
+  dictionary: wade_giles_romanization
 
 punctuator:
   import_preset: symbols
@@ -90,8 +127,11 @@ recognizer:
   import_preset: default
   patterns:
     punct: '^/([0-9]0?|[A-Za-z]+)$'
-    reverse_lookup: "`[a-z]*'?$"
+    luna_pinyin: "`[a-z]*'?$"
+    stroke: "^x[hspnz]*;?$"
+    jyut6ping3: "^u[a-z']*;?$"
+#    chuyin: "^v[a-z]*;?$"
 
 __patch:
   - grammar:/hant?
-  - luna_pinyin.custom:/patch?
+  - bopomofo.custom:/patch?
