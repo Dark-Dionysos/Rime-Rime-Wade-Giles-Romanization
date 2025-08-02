@@ -13,7 +13,6 @@ schema:
     - stroke
     - luna_pinyin
     - jyut6ping3
-    - bopomofo
 
 switches:
   - name: ascii_mode
@@ -113,7 +112,7 @@ jyut6ping3:
 #  tips: 〔chuyin〕
 
 wade_giles_romanization_reverse_lookup:
-  tags: [ luna_pinyin, stroke, jyut6ping3, ]
+  tags: [ luna_pinyin, stroke, jyut6ping3 ]
   overwrite_comment: false
   dictionary: wade_giles_romanization
 
