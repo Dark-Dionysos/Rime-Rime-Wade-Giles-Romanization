@@ -3,7 +3,7 @@
 This is an input schema for Rime, with which you can input Chinese characters through Wade-Giles Romanization.
 
 This is a standalone schema (independent of any other schemas), suitable for those who don't want other schemas on their disk. 
-The schema provides the reverse lookup function, which depends on luna_pinyin, stroke, and the jyut6ping3 schema.
+The schema provides the reverse lookup function, which depends on luna_pinyin, stroke, cangjie5, and the jyut6ping3 schema.
 
 # Installation
 
