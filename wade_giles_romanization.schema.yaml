@@ -13,6 +13,7 @@ schema:
     - stroke
     - luna_pinyin
     - jyut6ping3
+    - cangjie5
 
 switches:
   - name: ascii_mode
@@ -41,6 +42,7 @@ engine:
     - affix_segmentor@luna_pinyin
     - affix_segmentor@stroke
     - affix_segmentor@jyut6ping3
+    - affix_segmentor@cangjie5
 #    - affix_segmentor@chuyin
     - abc_segmentor
     - punct_segmentor
@@ -51,6 +53,7 @@ engine:
     - script_translator@luna_pinyin
     - script_translator@stroke
     - script_translator@jyut6ping3
+    - table_translator@cangjie5
 #    - script_translator@chuyin
   filters:
     - simplifier
@@ -104,6 +107,22 @@ jyut6ping3:
   suffix: ";"
   tips: 〔Cantonese〕
 
+cangjie5:
+  tag: cangjie5
+  dictionary: cangjie5
+  enable_user_dict: false
+  prefix: "v"
+  suffix: ";"
+  tips: 〔ts'ang chieh〕
+  preedit_format:
+    - 'xform/^([a-z]*)$/$1\t（\U$1\E）/'
+    - "xlit|ABCDEFGHIJKLMNOPQRSTUVWXYZ|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz~|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符～|"
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+    - "^yyy.*$"
+
 #chuyin:
 #  tag: chuyin
 #  dictionary: 
@@ -112,7 +131,7 @@ jyut6ping3:
 #  tips: 〔chuyin〕
 
 wade_giles_romanization_reverse_lookup:
-  tags: [ luna_pinyin, stroke, jyut6ping3 ]
+  tags: [ luna_pinyin, stroke, jyut6ping3, cangjie5 ]
   overwrite_comment: false
   dictionary: wade_giles_romanization
 
@@ -129,8 +148,6 @@ recognizer:
     luna_pinyin: "`[a-z]*'?$"
     stroke: "^x[hspnz]*;?$"
     jyut6ping3: "^u[a-z']*;?$"
+    cangjie5: "^v[a-z]*;?$"
 #    chuyin: "^v[a-z]*;?$"
 
-__patch:
-  - grammar:/hant?
-  - bopomofo.custom:/patch?
