@@ -23,3 +23,4 @@ For Mac and Linux users, please refer to the tutorial on the Rime official websi
 - Press `u` for jyutping (Cantonese phonetic) reverse lookup. Then input a Cantonese phonetic and the corresponding Wade-Giles Romanizationwill be output.
 - Press the grave for pinyin reverse lookup.
 - Press the `X` key for stroke reverse lookup.
+- Press the `v` key for tsangchieh code reverse lookup.
